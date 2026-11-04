@@ -1,0 +1,189 @@
+/* ===== General ===== */
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 40px 0 14px 0;
+}
+
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin: 32px 0 10px 0;
+}
+
+/* ===== Formulario (2 columnas) ===== */
+#formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  background: white;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+#formulario p {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* La razón social ocupa las dos columnas */
+#formulario p:first-child {
+  grid-column: 1 / -1;
+}
+
+#formulario input {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: normal;
+  color: #0f172a;
+  background: white;
+}
+
+#formulario input:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.12);
+}
+
+#formulario button {
+  grid-column: 1 / -1;
+  padding: 12px;
+  background: #e0e1e1;
+  color: rgb(24, 22, 22);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#formulario button:hover {
+  background: #f2f4f8;
+}
+
+/* ===== Mensaje ===== */
+#mensaje {
+  margin: 14px 0 0 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+#mensaje:empty {
+  display: none;
+}
+
+/* ===== Tabla ===== */
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+th, td {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+th {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ===== Botones de la tabla (clases creadas por app.js) ===== */
+td button {
+  padding: 6px 12px;
+  margin-right: 4px;
+  background: white;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+td button:hover {
+  background: #f1f5f9;
+}
+
+td button.eliminar {
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+td button.eliminar:hover {
+  background: #fef2f2;
+}
+
+/* ===== Visor del JSON ===== */
+#visor {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#visor:empty {
+  display: none;
+}
+
+/* ===== Celular ===== */
+@media (max-width: 640px) {
+  #formulario {
+    grid-template-columns: 1fr;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

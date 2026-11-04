@@ -2,16 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Registro de comprobantes</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>subir archivos</h1>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-    <label for="archivo"> Seleccione archivo:</label>
-    <input type="file" id="archivo" name="archivo" required>
-    <button type="submit">Enviar</button>
+  <h1>Registro de comprobantes</h1>
+
+  <form id="formulario">
+    <p>Razón Social / Nombre: <input type="text" name="razon_social" required></p>
+    <p>RUC: <input type="text" name="ruc" maxlength="11" pattern="[0-9]{11}"
+                   title="El RUC debe tener 11 números" required></p>
+    <p>Producto: <input type="text" name="producto" required></p>
+    <p>Total (S/): <input type="number" name="total" step="0.01" min="0" required></p>
+    <p>Seleccionar archivo: <input type="file" name="archivo" accept=".jpg,.jpeg,.png" required></p>
+    <button type="submit">Registrar comprobante</button>
   </form>
-  
+  <p id="mensaje"></p>
+
+  <h2>Listado de comprobantes</h2>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Razón Social / Nombre</th>
+        <th>RUC</th>
+        <th>Producto</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="lista"></tbody>
+  </table>
+
+  <h3>JSON de Textract</h3>
+  <pre id="visor"></pre>
+
+  <script src="app.js"></script>
 </body>
 </html>
