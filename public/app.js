@@ -1,10 +1,11 @@
 const formulario = document.getElementById("formulario")
+const mensaje = document.getElementById("mensaje")
 
 formulario.addEventListener("submit", async (e) => {
   e.preventDefault()
   const respuesta = await fetch("/upload", { method: "POST", body: new FormData(formulario) })
   const datos = await respuesta.json()
-  document.getElementById("mensaje").textContent = datos.message
+  mensaje.textContent = datos.message
   if (datos.success) {
     formulario.reset()
     cargarComprobantes()
@@ -36,7 +37,10 @@ async function cargarComprobantes() {
       document.getElementById("visor").textContent = JSON.stringify(c.textract, null, 2)
     }
     fila.querySelector(".eliminar").onclick = async () => {
-      await fetch("/comprobantes/" + c.id, { method: "DELETE" })
+      if (!confirm("¿Eliminar este comprobante?")) return
+      const respuesta = await fetch("/comprobantes/" + c.id, { method: "DELETE" })
+      const datos = await respuesta.json()
+      mensaje.textContent = datos.message
       cargarComprobantes()
     }
 
